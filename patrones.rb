@@ -1,13 +1,14 @@
-n = 5
+
+n = ARGV[0].to_i
 
 def letra_O(num)
     for i in 1..num do
         for j in 1..num do
 
-            if i==1||i==5 
+            if i==1||i==num 
                 print '*'
             else
-                if j!=1 && j!=5
+                if j!=1 && j!=num
                     print ' '
                 else
                     print '*'
@@ -22,10 +23,10 @@ def letra_I(num)
     for i in 1..num do
         for j in 1..num do
 
-            if i==1||i==5 
+            if i==1||i==num 
                 print '*'
             else
-                if j!=3
+                if num.odd? && j!=(1+num/2) || num.even? && j!= num/2
                     print ' '
                 else
                     print '*'
@@ -40,7 +41,7 @@ def letra_Z(num)
     for i in 1..num do
         for j in 1..num do
 
-            if i==1||i==5 
+            if i==1||i==num 
                 print '*'
             else
                 if j!=(num+1)-i
@@ -73,10 +74,10 @@ def numero_0(num)
     for i in 1..num do
         for j in 1..num do
 
-            if i==1||i==5 
+            if i==1||i==num 
                 print '*'
             else
-                if j!=1 && j!=5
+                if j!=1 && j!=num
                     if i==j 
                         print '*'
                     else
@@ -92,72 +93,46 @@ def numero_0(num)
         print "\n"
     end
 end
-def navidad(num)
-    for i in 1..num do
+def navidad(num) 
+    cent = num/2+1 #central
+    for i in 1..cent do
         for j in 1..num do
-            case i
-                when 1 
-                    if j==4 
-                        print '*'
-                    elsif j==num 
-                        print " \n"
-                    else
-                        print ' '
-                    end
-                    
-                when 2 
-                    if j==3||j==5 
-                        print '*' 
-                    elsif j==num 
-                        print " \n"
-                    else
-                        print ' '
-                    end
-                    
-                when 3 
-                    if j.even? 
-                        print '*'
-                    elsif j==num 
-                        print " \n"
-                    else
-                        print ' '
-                    end
-                    
-                when 4 
-                    if j.odd? 
-                        if j==7 then print "*\n" else print '*' end
-                    else
-                        print ' '
-                    end
-                when 5,6
-                    if j==4 
-                        print '*'
-                    elsif j==num 
-                        print " \n"
-                    else
-                        print ' '
-                    end
-                when 7
-                    if j.even?
-                        print '*'
-                    elsif j==num 
-                        print " \n"
-                    else
-                        print ' '
-                    end
-            
-            end
-
-
-                
+            if j>=(cent+1)-i &&  j<=i+(cent-1)
+                ################## '*'Lógica Interiores'*'###################
+                if cent.odd? && (i.even? && j.even? || i.odd? && j.odd?)
+                    print '*'
+                elsif cent.even? && (i.even? && j.odd? || i.odd? && j.even?)
+                    print '*'
+                else
+                    print ' '
+                end
+                #############################################################
+            else
+                print ' '
+            end  
         end
+        print "\n"              
+    end
+############# BASE ############
+    for i in cent+1..num do
+        for j in 1..num do
+            if j==cent 
+                print '*'
+            elsif i==num && (j==(cent-2)||j==(cent+2))
+                print '*'
+            else
+                print ' '
+            end
+        end
+        print "\n"
     end
 end
 
-#letra_O(n)
-#letra_I(n)
-#letra_Z(n)
-#letra_X(n)
-#numero_0(n)
-#navidad(n)
-#navidad(n+2) #Debe ser input=7
+
+
+# letra_O(n)
+# letra_I(n)
+# letra_Z(n)
+# letra_X(n)
+# numero_0(n)
+# navidad(n)
