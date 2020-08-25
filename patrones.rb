@@ -114,17 +114,32 @@ def navidad(num)
         print "\n"              
     end
 ############# BASE ############
-    for i in cent+1..num do
-        for j in 1..num do
-            if j==cent 
-                print '*'
-            elsif i==num && (j==(cent-2)||j==(cent+2))
-                print '*'
-            else
-                print ' '
+    if num>4
+        for i in cent+1..num do
+            for j in 1..num do
+                if j==cent 
+                    print '*'
+                elsif i==num && (j==(cent-2)||j==(cent+2))
+                    print '*'
+                else
+                    print ' '
+                end
             end
+            print "\n"
         end
-        print "\n"
+    elsif num>=0 || num<=4
+        for i in cent+1..num+1 do
+            for j in 1..num do
+                if j==cent 
+                    print '*'
+                elsif i==num+1 && (j==(cent-2)||j==(cent+2))
+                    print '*'
+                else
+                    print ' '
+                end
+            end
+            print "\n"
+        end
     end
 end
 
@@ -135,4 +150,4 @@ end
 # letra_Z(n)
 # letra_X(n)
 # numero_0(n)
-# navidad(n)
+ navidad(n)
